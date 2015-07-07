@@ -1,6 +1,7 @@
 package main
 
 import (
+	editor "../editor"
 	"net/http"
 )
 
@@ -14,6 +15,7 @@ func main() {
 
 func EditPageHandler(rw http.ResponseWriter, r *http.Request) {
 	rw.Write([]byte("The edit handler"))
+	rw.Write([]byte(editor.Test()))
 }
 
 func SavePageHandler(rw http.ResponseWriter, r *http.Request) {
