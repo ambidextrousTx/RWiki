@@ -1,7 +1,11 @@
 package main
 
-func Test() string {
-	return "The edit handler"
+import (
+	"net/http"
+)
+
+func Render() http.Handler {
+	return http.FileServer(http.Dir("../../ui/edit.html"))
 }
 
 func main() {

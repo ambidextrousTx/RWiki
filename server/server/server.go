@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	http.Handle("/", http.FileServer(http.Dir("../ui/")))
+	http.Handle("/", http.FileServer(http.Dir("../../ui/")))
 	http.HandleFunc("/edit", EditPageHandler)
 	http.HandleFunc("/save", SavePageHandler)
 	http.HandleFunc("/delete", DeletePageHandler)
@@ -14,8 +14,8 @@ func main() {
 }
 
 func EditPageHandler(rw http.ResponseWriter, r *http.Request) {
-	rw.Write([]byte("The edit handler"))
-	rw.Write([]byte(editor.Test()))
+	//rw.Write([]byte(editor.Render()))
+	http.ListenAndServe(":8080", editor.Render())
 }
 
 func SavePageHandler(rw http.ResponseWriter, r *http.Request) {
